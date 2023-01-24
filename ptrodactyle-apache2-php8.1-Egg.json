@@ -1,0 +1,42 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2023-01-24T07:16:46-05:00",
+    "name": "website",
+    "author": "admin@ourworkzone.admin",
+    "description": "website Egg running on apache2 and php8.1 support CMS , Laravel ,WHMCS ,WordPress,Xenforo2 and more....",
+    "features": null,
+    "docker_images": {
+        "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:amd64": "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:arm64"
+    },
+    "file_denylist": [],
+    "startup": "{{STARTUP_CMD}}",
+    "config": {
+        "files": "{\r\n    \"apache2\/ports.conf\": {\r\n        \"parser\": \"file\",\r\n        \"find\": {\r\n            \"    listen \": \"    listen {{server.build.default.port}};\"\r\n        }\r\n    }\r\n}",
+        "startup": "{\r\n    \"done\": \"\",\r\n    \"userInteraction\": []\r\n}",
+        "logs": "{\r\n    \"custom\": false,\r\n    \"location\": \"logs\/latest.log\"\r\n}",
+        "stop": "^C"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n\r\ncd \/mnt\/server\r\n\r\napt update\r\n\r\napt -y install git\r\n\r\ngit clone https:\/\/gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1 .\/temp\r\n\r\ncp -r .\/temp\/apache2 \/mnt\/server\/\r\ncp -r .\/temp\/php-fpm \/mnt\/server\/\r\ncp -r .\/temp\/webroot \/mnt\/server\/\r\ncp .\/temp\/start.sh \/mnt\/server\/\r\n\r\nchmod +x \/mnt\/server\/start.sh\r\n\r\nrm -rf .\/temp\r\n\r\ncd \/mnt\/server\/webroot\/\r\nrm -rf .\/temp",
+            "container": "ubuntu:latest",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Startup Command",
+            "description": "The command to start",
+            "env_variable": "STARTUP_CMD",
+            "default_value": ".\/start.sh",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "present",
+            "field_type": "text"
+        }
+    ]
+}
