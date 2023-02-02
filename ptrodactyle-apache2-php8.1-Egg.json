@@ -4,13 +4,14 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2023-01-24T07:16:46-05:00",
+    "exported_at": "2023-02-02T16:29:53-05:00",
     "name": "website",
     "author": "admin@ourworkzone.admin",
     "description": "website Egg running on apache2 and php8.1 support CMS , Laravel ,WHMCS ,WordPress,Xenforo2 and more....",
     "features": null,
     "docker_images": {
-        "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:amd64": "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:arm64"
+        "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:amd64": "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:amd64",
+        "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:arm64": "registry.gitlab.com\/ourworkzone\/ptrodactyle-apache2-php8.1:arm64"
     },
     "file_denylist": [],
     "startup": "{{STARTUP_CMD}}",
